@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="everyRefrigerator.store.mapper.UserMapper">
+
+	<insert id="createUser" parameterType="User">  
+		INSERT INTO user_tb
+		(id, password, name, dateOfBirth, phoneNumber, email)
+		VALUES(#{id}, #{password}, #{name}, #{dateOfBirth}, #{phoneNumber}, #{email})
+	</insert>
+
+	<select id="readById" parameterType="string" resultType="User">
+	SELECT id, password, name, dateOfBirth, phoneNumber, email
+	FROM user_tb
+	WHERE id = #{id}
+	</select>
+	
+	<update id="updateUser" parameterType="User">
+	UPDATE user_tb
+	SET password=#{password}, phoneNumber=#{phoneNumber}, email=#{email}
+	WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteUser" parameterType="User">
+	DELETE FROM user_tb
+	WHERE id = #{id}
+	</delete>
+
+</mapper>
